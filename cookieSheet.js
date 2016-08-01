@@ -51,10 +51,12 @@ function deleteCookie(event) {
 	if (!event.target.closest("button")) return;
 	var date = new Date;
 	var cookieName = event.target.getAttribute('id');
+	if(!confirm('Удалить cookie с именем ' + cookieName +'?')) return;
 	date.setDate(date.getDate() - 1);
 	document.cookie = cookieName + '=' + cookies[cookieName] + '; expires=' + date.toUTCString();
 	refillTable()
 };
+
 
 function getCookies() {
 	if(!document.cookie) return;
